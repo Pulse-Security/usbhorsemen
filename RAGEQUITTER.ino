@@ -17,10 +17,16 @@ uint8_t modifiers[] = {
 };
 
 void setup() {
-  randomSeed(analogRead(0));  
   pinMode(LED_BUILTIN, OUTPUT);
-  digitalWrite(LED_BUILTIN, LOW);
-  Keyboard.begin(); "›‡€ıÎÏ
+  for (uint8_t i = 0; i < 8; i++){
+    digitalWrite(LED_BUILTIN, HIGH);
+    delay(500);
+    digitalWrite(LED_BUILTIN, LOW);
+    delay(500);
+  }
+ 
+  randomSeed(analogRead(0));
+  Keyboard.begin();
 }
 
 void loop() {
