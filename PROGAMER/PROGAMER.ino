@@ -1,5 +1,6 @@
 #include <Mouse.h>
 
+bool led_state = 0;
 uint8_t modifier = 0;
 uint8_t code = 0;
 int loops = 0;
@@ -13,7 +14,8 @@ uint8_t modifiers[] = {
 
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
-  for (uint8_t i = 0; i < 8; i++){
+  
+  for (uint8_t i = 0; i < 5; i++){
     digitalWrite(LED_BUILTIN, HIGH);
     delay(500);
     digitalWrite(LED_BUILTIN, LOW);
@@ -26,6 +28,9 @@ void setup() {
 }
 
 void loop() {
+  digitalWrite(LED_BUILTIN, led_state);
+  led_state = !led_state;
+
   /* press buttons */
   for (uint8_t i = 0; i != 3; i++) {
     if (modifier & (1 << i)) {
